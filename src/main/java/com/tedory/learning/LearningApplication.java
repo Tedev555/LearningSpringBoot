@@ -1,27 +1,20 @@
 package com.tedory.learning;
 
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
-import org.springframework.boot.CommandLineRunner;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
 @SpringBootApplication
-public class LearningApplication implements ApplicationRunner, CommandLineRunner {
+public class LearningApplication {
+    private static final Logger logger = LoggerFactory.getLogger(LearningApplication.class.getName());
 
     public static void main(String[] args) {
+        logger.info("This is a info message");
+        logger.warn("This is a info message");
+        logger.error("This is a error message");
         SpringApplication.run(LearningApplication.class, args);
     }
 
-    @Override
-    public void run(ApplicationArguments args) throws Exception {
-        System.out.println("Hello from Application Runner!");
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
-        System.out.println("Hello from Command Line Runner!");
-    }
 }
