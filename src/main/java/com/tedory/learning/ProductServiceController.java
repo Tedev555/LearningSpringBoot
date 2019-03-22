@@ -49,6 +49,7 @@ public class ProductServiceController {
     //Using Using HTTP request PUT method. require parameter
     @RequestMapping(value = "/update_product/{id}", method = RequestMethod.PUT)
     public  ResponseEntity<Object> updateProduct(@PathVariable("id") String id, @RequestBody Product product) throws JsonProcessingException {
+        if (!productRepo.containsKey(id)) throw new ProductNotfoundException();
         productRepo.remove(id);
         product.setId(id);
         productRepo.put(id, product);
